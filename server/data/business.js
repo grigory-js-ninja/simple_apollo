@@ -1,4 +1,4 @@
-const BUSINESS = {
+export const BUSINESS = {
   "businessType": "NOT_SET",
   "businessAddress": {
       "line1": "tarasov198726+20@gmail.com",
@@ -472,5 +472,3 @@ const BUSINESS = {
   "businessWebsite": "",
   "paymentLinkSlug": "cherkhan"
 }
-
-module.exports.BUSINESS = BUSINESS
