@@ -28,7 +28,16 @@ const typeDefs = gql`
   }
 
   type Query {
-    paymentRequests: [PaymentRequest]
+    allPaymentRequests: [PaymentRequest]
+  }
+
+  type Mutation {
+    addPaymentToRequest(
+      amount: Int
+      currency: String
+      date: String
+      status: String
+    ): Payment
   }
 
   type Subscription {
@@ -38,8 +47,18 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    paymentRequests: () => BUSINESS.paymentRequests,
+    allPaymentRequests: () => BUSINESS.paymentRequests,
   },
+  Mutation: {
+    addPaymentToRequest: () => {
+      BUSINESS.paymentRequests[0].payments.push({
+        amount: 7800,
+        currency: 'USD',
+        date: new Date().toDateString(),
+        status: 'created'
+      })
+    }
+  }
 };
 
 const app = express()
