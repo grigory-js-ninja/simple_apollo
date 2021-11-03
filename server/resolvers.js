@@ -9,6 +9,7 @@ export const resolvers = {
   Mutation: {
     addPaymentToRequest: () => {
       const payment = {
+        id: Date.now(),
         amount: 7800,
         currency: 'USD',
         date: new Date().toDateString(),
