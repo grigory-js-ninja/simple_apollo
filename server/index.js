@@ -29,6 +29,7 @@ const typeDefs = gql`
 
   type Query {
     allPaymentRequests: [PaymentRequest]
+    getPaymentRequestById(id: ID): PaymentRequest
   }
 
   type Mutation {
@@ -48,6 +49,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     allPaymentRequests: () => BUSINESS.paymentRequests,
+    getPaymentRequestById: (_, { id }) => BUSINESS.paymentRequests.filter(pr => pr.id === id)[0]
   },
   Mutation: {
     addPaymentToRequest: () => {
