@@ -5,7 +5,7 @@ import { IRequest } from '../types/request'
 export function RequestDetailCard(props: IRequest) {
   const navigateTo = useNavigate()
 
-  const onAddPayment = (id: string) => {
+  const onAddPayment = () => {
     navigateTo('add-payment')
   }
 
@@ -32,7 +32,7 @@ export function RequestDetailCard(props: IRequest) {
           )
         })}
       </ListGroup>
-      <Button onClick={() => onAddPayment(props.id)}>Add Payment</Button>
+      <Button onClick={onAddPayment}>Add Payment</Button>
     </Card>
   )
 }
