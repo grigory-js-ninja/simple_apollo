@@ -7,15 +7,21 @@ export const resolvers = {
     getPaymentRequestById: (_, { id }) => BUSINESS.paymentRequests.filter(pr => pr.id === id)[0]
   },
   Mutation: {
-    addPaymentToRequest: () => {
+    addPaymentToRequest: (_, { requestId, amount, date }) => {
       const payment = {
         id: Date.now(),
-        amount: 7800,
+        amount,
+        date,
         currency: 'USD',
-        date: new Date().toDateString(),
         status: 'created'
       }
-      BUSINESS.paymentRequests[0].payments.push(payment)
+
+      BUSINESS.paymentRequests.map(pr => {
+        if(pr.id === requestId) {
+          pr.payments.push(payment)
+        }
+      })
+
       pubsub.publish('PAYMENT_CREATED', { onPaymentCreated: payment });
       return payment
     }

@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import { Container } from 'react-bootstrap'
 import {
   ApolloProvider,
 } from "@apollo/client";
@@ -11,8 +12,10 @@ import { AppNavbar } from './components/Navbar.component'
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
-   <AppNavbar />
-   <AppRouter />
+    <AppNavbar />
+    <Container>
+      <AppRouter />
+    </Container>
   </ApolloProvider>,
   document.getElementById('root')
 );

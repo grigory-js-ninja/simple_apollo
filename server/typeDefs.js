@@ -29,9 +29,7 @@ export const typeDefs = gql`
   type Mutation {
     addPaymentToRequest(
       amount: Int
-      currency: String
       date: String
-      status: String
     ): Payment
   }
 
