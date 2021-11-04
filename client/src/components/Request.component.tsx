@@ -49,9 +49,9 @@ export function Request() {
 
   useEffect(() => {
     if (subData) {
-      toast(`Payment ${subData.onPaymentCreated.amount} added to: ${data.getPaymentRequestById.id}`)
-      refetch()
+      toast.success(`Payment ${subData.onPaymentCreated.amount} added to: ${data.getPaymentRequestById.id}`)
     }
+    refetch()
   }, [subData, refetch])
 
   return (
