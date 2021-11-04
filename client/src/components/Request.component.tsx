@@ -48,10 +48,10 @@ export function Request() {
   );
 
   useEffect(() => {
-    if(subData) {
-      toast('Add new payment')
+    if (subData) {
+      toast(`Payment ${subData.onPaymentCreated.amount} added to: ${data.getPaymentRequestById.id}`)
+      refetch()
     }
-    refetch()
   }, [subData, refetch])
 
   return (

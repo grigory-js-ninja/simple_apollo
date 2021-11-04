@@ -1,16 +1,12 @@
 import { Card, Button } from 'react-bootstrap'
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify'
 import { IRequest } from '../types/request'
 
 export function RequestCard(props: IRequest): JSX.Element {
   const navigateTo = useNavigate();
 
   const onRequestClick = (id: string) => {
-    navigateTo(`/requests/${props.id}`)
-    toast(id, {
-      type: toast.TYPE.SUCCESS
-    })
+    navigateTo(`/requests/${id}`)
   }
 
   return (
