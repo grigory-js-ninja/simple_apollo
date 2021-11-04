@@ -1,16 +1,18 @@
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   ApolloProvider,
 } from "@apollo/client";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { apolloClient } from './utils/apolloClient'
+import { AppRouter } from './containers/Router.container'
+import { AppNavbar } from './components/Navbar.component'
 
 ReactDOM.render(
   <ApolloProvider client={apolloClient}>
-    <App />
+   <AppNavbar />
+   <AppRouter />
   </ApolloProvider>,
   document.getElementById('root')
 );
