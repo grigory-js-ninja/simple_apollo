@@ -27,7 +27,7 @@ ReactDOM.render(
       draggable
       pauseOnHover
     />
-    <Container>
+    <Container style={{ padding: '50px' }}>
       <AppRouter />
     </Container>
   </ApolloProvider>,

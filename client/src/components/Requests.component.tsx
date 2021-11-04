@@ -24,7 +24,7 @@ export function Requests(): JSX.Element {
   const { loading, error, data } = useQuery(GET_REQUESTS);
   
   return (
-    <Container fluid style={{ marginTop: '50px' }}>
+    <Container fluid >
       {error && <Alert variant={'danger'}>
        {error.message}
       </Alert>}
