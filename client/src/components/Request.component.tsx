@@ -48,9 +48,11 @@ export function Request() {
   );
 
   useEffect(() => {
-    console.log(subData);
+    if(subData) {
+      toast('Add new payment')
+    }
     refetch()
-  }, [subData])
+  }, [subData, refetch])
 
   return (
     <Container>

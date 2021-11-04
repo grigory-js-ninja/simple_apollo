@@ -30,7 +30,7 @@ export const resolvers = {
     onPaymentCreated: {
       subscribe: () => pubsub.asyncIterator(['PAYMENT_CREATED']),
       resolve: (payload) => {
-        return payload;
+        return payload.onPaymentCreated;
       },
     },
   },

@@ -1,6 +1,5 @@
 import { Container, Spinner, Alert } from 'react-bootstrap'
 import { gql, useQuery } from '@apollo/client';
-import { useEffect } from 'react'
 import { RequestCard } from './RequestCard.component'
 
 import { IRequest } from '../types/request'
