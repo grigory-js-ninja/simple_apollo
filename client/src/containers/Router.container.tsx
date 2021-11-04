@@ -14,9 +14,9 @@ export function AppRouter() {
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/requests" element={<Requests />} />
-      <Route path="/:requestId" element={<Request />} />
-      <Route path="/:requestId/payments" element={<Payments />} />
-      <Route path="/:requestId/add-payment" element={<AddPayment />} />
+      <Route path="/requests/:requestId" element={<Request />} />
+      <Route path="requests/:requestId/payments" element={<Payments />} />
+      <Route path="requests/:requestId/add-payment" element={<AddPayment />} />
     </Routes>
   </BrowserRouter>
   )

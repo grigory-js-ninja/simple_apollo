@@ -20,7 +20,7 @@ const GET_REQUESTS = gql`
   }
 `;
 
-export function Requests() {
+export function Requests(): JSX.Element {
   const { loading, error, data } = useQuery(GET_REQUESTS);
   
   return (
