@@ -28,6 +28,7 @@ export const typeDefs = gql`
 
   type Mutation {
     addPaymentToRequest(
+      requestId: ID
       amount: Int
       date: String
     ): Payment

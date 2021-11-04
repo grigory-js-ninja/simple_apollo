@@ -1,5 +1,7 @@
 import { RequestDetailCard } from './RequestDetailCard.component'
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, useSubscription } from '@apollo/client';
+import { toast } from 'react-toastify'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { Container, Alert, Spinner} from 'react-bootstrap'
 
@@ -25,12 +27,30 @@ const GET_REQUEST = gql`
   }
 `;
 
+const ON_PAYMENT_ADD = gql`
+  subscription PaymentCreated {
+    onPaymentCreated {
+      id
+      amount
+      currency
+    }
+  }
+`
+
 
 export function Request() {
   const { requestId } = useParams()
-  const { loading, error, data } = useQuery(GET_REQUEST, {
+  const { loading, error, data, refetch } = useQuery(GET_REQUEST, {
     variables: { id: requestId}
   });
+  const { data: subData } = useSubscription(
+    ON_PAYMENT_ADD,
+  );
+
+  useEffect(() => {
+    console.log(subData);
+    refetch()
+  }, [subData])
 
   return (
     <Container>
@@ -38,7 +58,7 @@ export function Request() {
        {error.message}
       </Alert>}
       {loading ? <Spinner animation="border" variant="dark" /> : 
-        <RequestDetailCard { ...data.getPaymentRequestById } />
+        <RequestDetailCard { ...data?.getPaymentRequestById } />
       }
     </Container>
   )

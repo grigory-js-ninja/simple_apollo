@@ -29,6 +29,9 @@ export const resolvers = {
   Subscription: {
     onPaymentCreated: {
       subscribe: () => pubsub.asyncIterator(['PAYMENT_CREATED']),
+      resolve: (payload) => {
+        return payload;
+      },
     },
   },
 };

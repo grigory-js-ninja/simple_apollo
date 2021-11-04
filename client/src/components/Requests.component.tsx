@@ -1,6 +1,6 @@
 import { Container, Spinner, Alert } from 'react-bootstrap'
 import { gql, useQuery } from '@apollo/client';
-
+import { useEffect } from 'react'
 import { RequestCard } from './RequestCard.component'
 
 import { IRequest } from '../types/request'
@@ -22,7 +22,7 @@ const GET_REQUESTS = gql`
 
 export function Requests(): JSX.Element {
   const { loading, error, data } = useQuery(GET_REQUESTS);
-  
+
   return (
     <Container fluid >
       {error && <Alert variant={'danger'}>

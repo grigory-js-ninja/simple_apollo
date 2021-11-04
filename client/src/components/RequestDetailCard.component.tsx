@@ -1,7 +1,13 @@
-import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { Card, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
+import { useNavigate } from "react-router-dom";
 import { IRequest } from '../types/request'
 
 export function RequestDetailCard(props: IRequest) {
+  const navigateTo = useNavigate()
+
+  const onAddPayment = (id: string) => {
+    navigateTo('add-payment')
+  }
 
   return (
     <Card>
@@ -14,7 +20,7 @@ export function RequestDetailCard(props: IRequest) {
         <p>Total Amount: {props.totalAmount}</p>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        {props.payments.map((p, idx) => {
+        {props?.payments?.map((p, idx) => {
           return (
             <ListGroupItem key={p.id}>
               <Card.Title>Paiment #{idx+1}</Card.Title>
@@ -26,6 +32,7 @@ export function RequestDetailCard(props: IRequest) {
           )
         })}
       </ListGroup>
+      <Button onClick={() => onAddPayment(props.id)}>Add Payment</Button>
     </Card>
   )
 }
